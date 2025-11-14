@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+@layer utilities {
+  .horizontal-scroll-wrapper {
+    position: relative;
+  }
+
+  .horizontal-scroll-wrapper::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 50px; /* Lebar dari fade */
+    background: linear-gradient(to right, #1e293b, transparent);
+    pointer-events: none; /* Memastikan fade tidak mengganggu klik */
+    z-index: 1;
+  }
+
+  .horizontal-scroll-wrapper::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 50px; /* Lebar dari fade */
+    background: linear-gradient(to left, #1e293b, transparent);
+    pointer-events: none; /* Memastikan fade tidak mengganggu klik */
+  }
+  .horizontal-scroll-container::-webkit-scrollbar {
+    height: 4px;
+  }
+  .horizontal-scroll-container::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .horizontal-scroll-container::-webkit-scrollbar-thumb {
+    background-color: #218a49;
+    border-radius: 20px;
+  }
+}
