@@ -77,6 +77,12 @@ const p3hData = {
         "Mematuhi kewajiban sertifikasi Halal dari pemerintah (BPJPH).",
       icon: <Briefcase size={24} />,
     },
+    {
+      title: "Meningkatkan Keamanan dan Kenyamanan",
+      description:
+        "Pentingnya memilih produk yang sesuai dengan nilai-nilai agama",
+      icon: <User size={24} />,
+    },
   ],
 };
 
