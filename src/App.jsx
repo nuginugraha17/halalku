@@ -99,8 +99,10 @@ const Section = ({ title, icon, children, id, sectionRef }) => (
 
 // Komponen Card untuk Manfaat
 const BenefitCard = ({ benefit }) => (
-  <div className="bg-slate-800 p-6 rounded-xl border border-slate-700/50 flex items-start gap-4">
-    <div className="flex-shrink-0 text-emerald-400 mt-1">{benefit.icon}</div>
+  <div className="bg-slate-800 p-6 rounded-xl border border-slate-700/50 text-center">
+    <div className="flex justify-center mb-4 text-emerald-400">
+      {benefit.icon}
+    </div>
     <div>
       <h3 className="text-lg font-semibold text-white mb-1">{benefit.title}</h3>
       <p className="text-slate-400 text-sm">{benefit.description}</p>
@@ -110,8 +112,10 @@ const BenefitCard = ({ benefit }) => (
 
 // Komponen Card untuk Langkah Layanan
 const ServiceStepCard = ({ service }) => (
-  <div className="bg-slate-800 p-6 rounded-xl border border-slate-700/50 flex items-start gap-4">
-    <div className="flex-shrink-0 text-emerald-400 mt-1">{service.icon}</div>
+  <div className="bg-slate-800 p-6 rounded-xl border border-slate-700/50 text-center">
+    <div className="flex justify-center mb-4 text-emerald-400">
+      {service.icon}
+    </div>
     <h3 className="text-lg font-semibold text-white mb-2">{service.title}</h3>
     <p className="text-slate-400 text-sm">{service.description}</p>
   </div>
