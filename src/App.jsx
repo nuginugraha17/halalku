@@ -16,8 +16,8 @@ import {
   X, // BARU: Untuk tombol tutup
   Calendar, // BARU: Untuk tanggal
 } from "lucide-react";
-import { supabase } from "./lib/supabaseClient"; // PASTIKAN PATH INI BENAR
 import profileImage from "./assets/Nugi.png";
+import postData from "./posts.json";
 
 /**
  * Data Konfigurasi Halaman P3H
@@ -177,32 +177,35 @@ export default function App() {
   )}`;
 
   // --- STATE BARU UNTUK BLOG ---
-  const [posts, setPosts] = useState([]);
-  const [loadingPosts, setLoadingPosts] = useState(true);
-  const [errorPosts, setErrorPosts] = useState(null);
   const [selectedPost, setSelectedPost] = useState(null);
 
-  // --- MENGAMBIL DATA BLOG DARI SUPABASE ---
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const { data, error } = await supabase
-          .from("posts")
-          .select("*")
-          .order("date", { ascending: false });
-
-        if (error) throw error;
-
-        setPosts(data || []);
-      } catch (error) {
-        setErrorPosts(error.message);
-        console.error("Error fetching posts:", error);
-      } finally {
-        setLoadingPosts(false);
-      }
+  // --- MENGGUNAKAN DATA BLOG YANG DIIMPOR ---
+  const [posts] = useState(() => {
+    const monthMap = {
+      Januari: 0,
+      Februari: 1,
+      Maret: 2,
+      April: 3,
+      Mei: 4,
+      Juni: 5,
+      Juli: 6,
+      Agustus: 7,
+      September: 8,
+      Oktober: 9,
+      November: 10,
+      Desember: 11,
     };
-    fetchPosts();
-  }, []);
+
+    return postData.sort((a, b) => {
+      const dateA = a.date.split(" ");
+      const dateB = b.date.split(" ");
+
+      const parsedDateA = new Date(dateA[2], monthMap[dateA[1]], dateA[0]);
+      const parsedDateB = new Date(dateB[2], monthMap[dateB[1]], dateB[0]);
+
+      return parsedDateB - parsedDateA;
+    });
+  });
 
   // Ref untuk section Blog supaya tombol bisa scroll ke sana
   const blogRef = useRef(null);
@@ -304,7 +307,7 @@ export default function App() {
           icon={<CheckCircle size={28} />}
           id="manfaat"
         >
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {benefits.map((benefit, index) => (
               <BenefitCard key={index} benefit={benefit} />
             ))}
@@ -371,23 +374,11 @@ export default function App() {
         >
           <div className="relative horizontal-scroll-wrapper">
             <div className="flex gap-6 overflow-x-auto pb-4 -mb-4 horizontal-scroll-container">
-              {loadingPosts && (
-                <p className="text-slate-400">Memuat artikel...</p>
-              )}
-              {errorPosts && (
-                <p className="text-red-400">
-                  Gagal memuat artikel: {errorPosts}
-                </p>
-              )}
-              {!loadingPosts && !errorPosts && (
-                <>
-                  {posts.map((post) => (
-                    <div key={post.id} className="w-[300px] flex-shrink-0">
-                      <BlogPostCard post={post} onReadMore={handleReadMore} />
-                    </div>
-                  ))}
-                </>
-              )}
+              {posts.map((post) => (
+                <div key={post.id} className="w-[300px] flex-shrink-0">
+                  <BlogPostCard post={post} onReadMore={handleReadMore} />
+                </div>
+              ))}
             </div>
           </div>
         </Section>
