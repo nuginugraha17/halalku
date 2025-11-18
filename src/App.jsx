@@ -322,12 +322,16 @@ export default function App() {
               title="Alur Sertifikasi"
               items={[
                 {
-                  label: "Self Declare (Pengajuan Mandiri)",
+                  label: "Pengajuan Mandiri (Self Declare)",
                   href: "https://drive.google.com/drive/folders/1NccVkom94IS6WK2t1FddIlmzYnRWwDff?usp=sharing",
                 },
                 {
                   label: "Pengajuan Reguler",
                   href: "https://drive.google.com/drive/folders/1UetIExArpMa_ADp25JIT_XOCv2kc9OP3?usp=sharing",
+                },
+                {
+                  label: "Pendafataran Produk",
+                  href: "https://ptsp.halal.go.id/",
                 },
               ]}
             />
@@ -370,6 +374,13 @@ export default function App() {
             mendapatkan Sertifikat Halal sesuai regulasi BPJPH.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <a
+              href="https://ptsp.halal.go.id/"
+              target="_blank"
+              className="px-6 py-3 bg-slate-700 text-slate-100 rounded-lg hover:bg-slate-600 transition-colors font-medium"
+            >
+              Daftarkan Produkmu!
+            </a>
             <a
               href={whatsappUrl}
               target="_blank"
@@ -473,7 +484,7 @@ export default function App() {
 
         {/* --- Contact Section --- */}
         <Section
-          title="Siap Memulai?"
+          title="Siap Memulai / Ada Kendala?"
           icon={<ShieldCheck size={28} />}
           id="kontak"
         >
