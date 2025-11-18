@@ -315,7 +315,6 @@ export default function App() {
           }`}
         >
           <div className="flex items-center gap-2 text-md font-bold text-white tracking-tight">
-            <ShieldCheck className="text-emerald-400" />
             HALALKU
           </div>
           <div className="flex items-center gap-4 mr-2">
