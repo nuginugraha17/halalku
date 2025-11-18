@@ -318,7 +318,7 @@ export default function App() {
             <ShieldCheck className="text-emerald-400" />
             HALALKU
           </div>
-          <div className="flex items-center gap-5">
+          <div className="flex items-center gap-4 mr-2">
             <DropdownMenu
               title="Alur Sertifikasi"
               items={[
