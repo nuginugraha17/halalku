@@ -294,10 +294,10 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-900 text-slate-100 font-inter p-4 md:p-8 selection:bg-emerald-500 selection:text-white">
-      <main className="max-w-6xl mx-auto">
-        {/* --- Navbar --- */}
-        <nav className="flex justify-between items-center py-4 mb-12 md:mb-20">
+    <div className="min-h-screen bg-slate-900 text-slate-100 font-inter selection:bg-emerald-500 selection:text-white">
+      {/* --- Navbar yang dibuat Sticky --- */}
+      <header className="sticky top-0 z-40 w-full bg-slate-900/80 backdrop-blur-sm border-b border-slate-800">
+        <nav className="max-w-6xl mx-auto flex justify-between items-center py-4 px-4 md:px-8">
           <div className="flex items-center gap-2 text-xl font-bold text-white tracking-tight">
             <ShieldCheck className="text-emerald-400" />
             P3H Raden Miftakhurozak Budi Nugraha
@@ -305,7 +305,8 @@ export default function App() {
           <div className="flex items-center gap-6">
             <button
               type="button"
-              onClick={() => smoothScrollTo(blogRef)}
+              // Offset disesuaikan karena navbar sekarang sticky
+              onClick={() => smoothScrollTo(blogRef, 100)}
               className="text-slate-300 hover:text-emerald-400 transition-colors text-sm font-medium"
             >
               Artikel Halalku
@@ -359,9 +360,14 @@ export default function App() {
             </a>
           </div>
         </nav>
+      </header>
 
+      <main className="max-w-6xl mx-auto p-4 md:p-8">
         {/* --- Hero Section --- */}
-        <section id="hero" className="text-center mb-20 md:mb-32">
+        <section
+          id="hero"
+          className="text-center mt-12 md:mt-20 mb-20 md:mb-32"
+        >
           <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-4 leading-tight">
             Bantu Usaha Anda Tersertifikasi{" "}
             <span className="text-emerald-400">Halal</span>
@@ -393,7 +399,7 @@ export default function App() {
             <button
               href="#layanan"
               className="px-6 py-3 bg-slate-700 text-slate-100 rounded-lg hover:bg-slate-600 transition-colors font-medium"
-              onClick={() => smoothScrollTo(layananRef)}
+              onClick={() => smoothScrollTo(layananRef, 100)}
             >
               Lihat Alur Layanan
             </button>
