@@ -31,6 +31,7 @@ const p3hData = {
     email: "221002609@uii.ac.id",
     phone: "6281357478690",
     profileImage: profileImage,
+    halalImage: halalImage,
   },
   services: [
     {
@@ -425,7 +426,7 @@ export default function App() {
           {/* Gambar */}
           <div className="flex-shrink-0">
             <img
-              src={halalImage}
+              src={user.halalImage}
               alt="Logo Halal Indonesia"
               className="w-96 h-96 md:w-128 md:h-128"
             />
