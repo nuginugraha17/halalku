@@ -319,14 +319,6 @@ export default function App() {
             HALALKU
           </div>
           <div className="flex items-center gap-5">
-            <a
-              type="button"
-              target="_blank"
-              href="https://bpjph.halal.go.id/"
-              className="text-slate-300 hover:text-emerald-400 transition-colors text-sm font-medium"
-            >
-              Cek Produk Halal
-            </a>
             <DropdownMenu
               title="Alur Sertifikasi"
               items={[
@@ -354,6 +346,10 @@ export default function App() {
                 {
                   label: "Cek No. Regitstrasi LP3H",
                   href: "https://bpjph.halal.go.id/search/data_lp3h",
+                },
+                {
+                  label: "Cek Produk Halal",
+                  href: "https://bpjph.halal.go.id/",
                 },
               ]}
             />
