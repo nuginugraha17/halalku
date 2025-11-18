@@ -18,6 +18,7 @@ import {
   ChevronDown, // BARU: Untuk dropdown
 } from "lucide-react";
 import profileImage from "./assets/Nugi.png";
+import halalImage from "./assets/halal.png";
 import postData from "./posts.json";
 
 const p3hData = {
@@ -380,43 +381,54 @@ export default function App() {
         {/* --- Hero Section --- */}
         <section
           id="hero"
-          className="text-center mt-12 md:mt-20 mb-20 md:mb-32"
+          className="flex flex-col-reverse md:flex-row items-center gap-8 md:gap-12 mt-12 md:mt-20 mb-20 md:mb-32"
         >
-          <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-4 leading-tight">
-            Bantu Usaha Anda Tersertifikasi{" "}
-            <span className="text-emerald-400">Halal</span>
-          </h1>
-          <p className="text-xl md:text-2xl text-slate-300 mb-8 max-w-3xl mx-auto">
-            Jasa Pendampingan Proses Produk Halal (P3H)
-          </p>
-          <p className="text-lg text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed">
-            Resmi, tepercaya, dan profesional. Saya siap mendampingi UMKM Anda
-            mendapatkan Sertifikat Halal sesuai regulasi BPJPH.
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <a
-              href="https://ptsp.halal.go.id/"
-              target="_blank"
-              className="px-6 py-3 bg-slate-700 text-slate-100 rounded-lg hover:bg-slate-600 transition-colors font-medium"
-            >
-              Daftarkan Produkmu!
-            </a>
-            <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-6 py-3 bg-emerald-600 text-white rounded-lg shadow-lg hover:bg-emerald-700 transition-colors font-medium flex items-center justify-center gap-2"
-            >
-              <Phone size={18} />
-              Hubungi via WhatsApp
-            </a>
-            <button
-              href="#layanan"
-              className="px-6 py-3 bg-slate-700 text-slate-100 rounded-lg hover:bg-slate-600 transition-colors font-medium"
-              onClick={() => smoothScrollTo(layananRef, 100)}
-            >
-              Lihat Alur Layanan
-            </button>
+          {/* Konten Teks */}
+          <div className="text-center md:text-left flex-1">
+            <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-4 leading-tight">
+              Bantu Usaha Anda Tersertifikasi{" "}
+              <span className="text-emerald-400">Halal</span>
+            </h1>
+            <p className="text-xl md:text-2xl text-slate-300 mb-8 max-w-3xl mx-auto md:mx-0">
+              Jasa Pendampingan Proses Produk Halal (P3H)
+            </p>
+            <p className="text-lg text-slate-400 mb-10 max-w-2xl mx-auto md:mx-0 leading-relaxed">
+              Resmi, tepercaya, dan profesional. Saya siap mendampingi UMKM Anda
+              mendapatkan Sertifikat Halal sesuai regulasi BPJPH.
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center md:justify-start gap-4">
+              <a
+                href="https://ptsp.halal.go.id/"
+                target="_blank"
+                className="px-6 py-3 bg-slate-700 text-slate-100 rounded-lg hover:bg-slate-600 transition-colors font-medium"
+              >
+                Daftarkan Produkmu!
+              </a>
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-3 bg-emerald-600 text-white rounded-lg shadow-lg hover:bg-emerald-700 transition-colors font-medium flex items-center justify-center gap-2"
+              >
+                <Phone size={18} />
+                Hubungi via WhatsApp
+              </a>
+              <button
+                href="#layanan"
+                className="px-6 py-3 bg-slate-700 text-slate-100 rounded-lg hover:bg-slate-600 transition-colors font-medium"
+                onClick={() => smoothScrollTo(layananRef, 100)}
+              >
+                Lihat Alur Layanan
+              </button>
+            </div>
+          </div>
+          {/* Gambar */}
+          <div className="flex-shrink-0">
+            <img
+              src={halalImage}
+              alt="Logo Halal Indonesia"
+              className="w-96 h-96 md:w-128 md:h-128"
+            />
           </div>
         </section>
 
