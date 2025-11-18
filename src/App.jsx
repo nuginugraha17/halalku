@@ -20,10 +20,6 @@ import {
 import profileImage from "./assets/Nugi.png";
 import postData from "./posts.json";
 
-/**
- * Data Konfigurasi Halaman P3H
- * Ganti nilai-nilai placeholder di bawah ini dengan informasi Anda.
- */
 const p3hData = {
   user: {
     name: "Raden Miftakhurozak Budi Nugraha",
@@ -111,7 +107,7 @@ const BenefitCard = ({ benefit }) => (
   </div>
 );
 
-// --- KOMPONEN DROPDOWN BARU ---
+// Untuk Komponen Dropdown di Navbar
 const DropdownMenu = ({ title, items }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -175,7 +171,6 @@ const ServiceStepCard = ({ service }) => (
   </div>
 );
 
-// --- KOMPONEN MODAL BARU ---
 const Modal = ({ isOpen, onClose, children }) => {
   if (!isOpen) return null;
 
@@ -200,7 +195,6 @@ const Modal = ({ isOpen, onClose, children }) => {
   );
 };
 
-// --- KOMPONEN KARTU BLOG BARU ---
 const BlogPostCard = ({ post, onReadMore }) => (
   <div className="bg-slate-800 p-6 rounded-xl border border-slate-700/50 flex flex-col h-full">
     <h3 className="text-xl font-bold text-white mb-2">{post.title}</h3>
@@ -233,7 +227,6 @@ export default function App() {
   // --- STATE BARU UNTUK BLOG ---
   const [selectedPost, setSelectedPost] = useState(null);
 
-  // --- MENGGUNAKAN DATA BLOG YANG DIIMPOR ---
   const [posts] = useState(() => {
     const monthMap = {
       Januari: 0,
@@ -293,7 +286,6 @@ export default function App() {
     setSelectedPost(null);
   };
 
-  // --- STATE & EFEK BARU UNTUK NAVBAR SCROLL ---
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -546,7 +538,6 @@ export default function App() {
         </footer>
       </main>
 
-      {/* --- MODAL BLOG YANG DIPERBARUI --- */}
       <Modal isOpen={!!selectedPost} onClose={handleCloseModal}>
         {selectedPost && (
           <>
