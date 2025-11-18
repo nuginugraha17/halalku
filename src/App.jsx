@@ -309,7 +309,7 @@ export default function App() {
               onClick={() => smoothScrollTo(blogRef, 100)}
               className="text-slate-300 hover:text-emerald-400 transition-colors text-sm font-medium"
             >
-              Artikel Halalku
+              Artikel
             </button>
             <a
               type="button"
@@ -340,11 +340,11 @@ export default function App() {
               title="Data BPJPH"
               items={[
                 {
-                  label: "Data Pendamping",
+                  label: "Cek No. Registrasi Pendamping",
                   href: "https://bpjph.halal.go.id/search/data_p3h",
                 },
                 {
-                  label: "Data LP3H",
+                  label: "Cek No. Regitstrasi LP3H",
                   href: "https://bpjph.halal.go.id/search/data_lp3h",
                 },
               ]}
