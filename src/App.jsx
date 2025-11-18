@@ -15,6 +15,7 @@ import {
   Rss, // BARU: Untuk Blog
   X, // BARU: Untuk tombol tutup
   Calendar, // BARU: Untuk tanggal
+  ChevronDown, // BARU: Untuk dropdown
 } from "lucide-react";
 import profileImage from "./assets/Nugi.png";
 import postData from "./posts.json";
@@ -109,6 +110,59 @@ const BenefitCard = ({ benefit }) => (
     </div>
   </div>
 );
+
+// --- KOMPONEN DROPDOWN BARU ---
+const DropdownMenu = ({ title, items }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  // Menutup dropdown saat klik di luar
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  return (
+    <div className="relative" ref={dropdownRef}>
+      <button
+        type="button"
+        onClick={() => setIsOpen(!isOpen)}
+        className="text-slate-300 hover:text-emerald-400 transition-colors text-sm font-medium flex items-center gap-1"
+      >
+        {title}
+        <ChevronDown
+          size={16}
+          className={`transition-transform ${isOpen ? "rotate-180" : ""}`}
+        />
+      </button>
+      {isOpen && (
+        <div className="absolute right-0 mt-2 w-48 bg-slate-800 rounded-md shadow-lg z-20 border border-slate-700">
+          <ul className="py-1">
+            {items.map((item, index) => (
+              <li key={index}>
+                <a
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block px-4 py-2 text-sm text-slate-300 hover:bg-slate-700 hover:text-white"
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+  );
+};
 
 // Komponen Card untuk Langkah Layanan
 const ServiceStepCard = ({ service }) => (
@@ -254,8 +308,42 @@ export default function App() {
               onClick={() => smoothScrollTo(blogRef)}
               className="text-slate-300 hover:text-emerald-400 transition-colors text-sm font-medium"
             >
-              Blog
+              Artikel Halalku
             </button>
+            <a
+              type="button"
+              target="_blank"
+              href="https://bpjph.halal.go.id/"
+              className="text-slate-300 hover:text-emerald-400 transition-colors text-sm font-medium"
+            >
+              Cek Produk Halal
+            </a>
+            <DropdownMenu
+              title="Alur Sertifikasi"
+              items={[
+                {
+                  label: "Self Declare (Pengajuan Mandiri)",
+                  href: "https://drive.google.com/drive/folders/1NccVkom94IS6WK2t1FddIlmzYnRWwDff?usp=sharing",
+                },
+                {
+                  label: "Pengajuan Reguler",
+                  href: "https://drive.google.com/drive/folders/1UetIExArpMa_ADp25JIT_XOCv2kc9OP3?usp=sharing",
+                },
+              ]}
+            />
+            <DropdownMenu
+              title="Data BPJPH"
+              items={[
+                {
+                  label: "Data Pendamping",
+                  href: "https://bpjph.halal.go.id/search/data_p3h",
+                },
+                {
+                  label: "Data LP3H",
+                  href: "https://bpjph.halal.go.id/search/data_lp3h",
+                },
+              ]}
+            />
             <a
               href={whatsappUrl}
               target="_blank"
