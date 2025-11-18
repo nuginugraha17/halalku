@@ -203,7 +203,7 @@ const BlogPostCard = ({ post, onReadMore }) => (
       <span>{post.date}</span>
     </div>
     <p className="text-slate-300 leading-relaxed mb-6 flex-grow">
-      {`${post.content.substring(0, 100)}...`}
+      {`${post.content.substring(0, 130)}...`}
     </p>
     <button
       onClick={() => onReadMore(post)}
@@ -376,7 +376,7 @@ export default function App() {
         </nav>
       </header>
 
-      <main className="max-w-6xl mx-auto p-4 md:p-8">
+      <main className="max-w-7xl mx-auto p-4 md:p-8">
         {/* --- Hero Section --- */}
         <section
           id="hero"
@@ -494,7 +494,7 @@ export default function App() {
           <div className="relative horizontal-scroll-wrapper">
             <div className="flex gap-6 overflow-x-auto pb-4 -mb-4 horizontal-scroll-container">
               {posts.map((post) => (
-                <div key={post.id} className="w-[300px] flex-shrink-0">
+                <div key={post.id} className="w-[400px] flex-shrink-0">
                   <BlogPostCard post={post} onReadMore={handleReadMore} />
                 </div>
               ))}
