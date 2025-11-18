@@ -18,7 +18,7 @@ import {
   ChevronDown, // BARU: Untuk dropdown
 } from "lucide-react";
 import profileImage from "./assets/Nugi.png";
-import halalImage from "./assets/halal.png";
+import halalImage from "./assets/Halal.png";
 import postData from "./posts.json";
 
 const p3hData = {
