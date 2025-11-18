@@ -293,11 +293,33 @@ export default function App() {
     setSelectedPost(null);
   };
 
+  // --- STATE & EFEK BARU UNTUK NAVBAR SCROLL ---
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Set state menjadi true jika scroll lebih dari 10px
+      setIsScrolled(window.scrollY > 10);
+    };
+
+    // Tambahkan event listener saat komponen dimuat
+    window.addEventListener("scroll", handleScroll);
+
+    // Hapus event listener saat komponen dibongkar
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []); // Array kosong memastikan efek ini hanya berjalan sekali
+
   return (
     <div className="min-h-screen bg-slate-900 text-slate-100 font-inter selection:bg-emerald-500 selection:text-white">
       {/* --- Navbar yang dibuat Sticky --- */}
       <header className="sticky top-0 z-40 w-full bg-slate-900/80 backdrop-blur-sm border-b border-slate-800">
-        <nav className="max-w-6xl mx-auto flex justify-between items-center py-4 px-4 md:px-8">
+        <nav
+          className={`max-w-6xl mx-auto flex justify-between items-center px-4 md:px-8 transition-all duration-300 ${
+            isScrolled ? "py-2" : "py-4"
+          }`}
+        >
           <div className="flex items-center gap-2 text-xl font-bold text-white tracking-tight">
             <ShieldCheck className="text-emerald-400" />
             P3H Raden Miftakhurozak Budi Nugraha
