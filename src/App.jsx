@@ -314,19 +314,11 @@ export default function App() {
             isScrolled ? "py-2" : "py-4"
           }`}
         >
-          <div className="flex items-center gap-2 text-xl font-bold text-white tracking-tight">
+          <div className="flex items-center gap-2 text-md font-bold text-white tracking-tight">
             <ShieldCheck className="text-emerald-400" />
-            P3H Raden Miftakhurozak Budi Nugraha
+            HALALKU
           </div>
-          <div className="flex items-center gap-6">
-            <button
-              type="button"
-              // Offset disesuaikan karena navbar sekarang sticky
-              onClick={() => smoothScrollTo(blogRef, 100)}
-              className="text-slate-300 hover:text-emerald-400 transition-colors text-sm font-medium"
-            >
-              Artikel
-            </button>
+          <div className="flex items-center gap-5">
             <a
               type="button"
               target="_blank"
